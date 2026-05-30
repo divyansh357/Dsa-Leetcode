@@ -7,6 +7,8 @@ import java.util.TreeSet;
 
 public class hard {
 
+    // 3161. Block Placement Queries
+
     private final int MAXX = 50000;
     private int[] seg;
 
