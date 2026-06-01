@@ -1,5 +1,7 @@
 package Array.Easy;
 
+import java.util.Arrays;
+
 public class easy {
     
     //3300. Minimum Element After Replacement With Digit Sum
@@ -23,6 +25,21 @@ public class easy {
             n/=10;
         }
         return sum;
+    }
+
+    // 2144. Minimum Cost of Buying Candies With Discount
+
+    public int minimumCost(int[] cost) {
+        Arrays.sort(cost);
+        int total = 0;
+
+        for (int i = cost.length - 1; i >= 0; i -= 3) {
+            total += cost[i];
+            if (i - 1 >= 0)
+                total += cost[i - 1];
+        }
+
+        return total;
     }
 
 }
