@@ -63,3 +63,12 @@ public class easy {
         return res;
     }
 }
+
+// 1344. Angle Between Hands of a Clock
+class Solution {
+    public double angleClock(int hour, int minutes) {
+        double x = hour + minutes / 60.0;
+        double diff = (11.0 * x) % 12.0;
+        return Math.min(diff, 12.0 - diff) * 30.0;
+    }
+}
