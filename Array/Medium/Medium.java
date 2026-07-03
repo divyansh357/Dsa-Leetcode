@@ -38,3 +38,5 @@ public class Medium {
         return (mx - mn) * 1L * k;
     }
 }
+
+// 3737. Count Subarrays With Majority Element I
