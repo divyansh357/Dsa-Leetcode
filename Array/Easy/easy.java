@@ -62,7 +62,7 @@ public class easy {
 
         return res;
     }
-}
+
 
 // 1344. Angle Between Hands of a Clock
 class Solution {
@@ -98,3 +98,18 @@ class Solution {
         }
         return ans;
     }
+
+// 27. Remove Element    
+
+     public int removeElement(int[] nums, int val) {
+        int index = 0;
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] != val) {
+                nums[index] = nums[i];
+                index++;
+            }
+        }
+        return index;
+    }
+
+}    
