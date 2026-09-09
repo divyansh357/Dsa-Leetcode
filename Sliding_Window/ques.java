@@ -1,5 +1,7 @@
 package Sliding_Window;
 
+import java.util.HashSet;
+
 public class ques {
 
     // 643. Maximum Average Subarray I
@@ -37,6 +39,26 @@ public class ques {
             }
         }
         return maxVowels; 
+    }
+
+
+    // 3. Longest Substring Without Repeating Characters
+    public int lengthOfLongestSubstring(String s) {
+        int left = 0;
+        int maxLength = 0;
+        HashSet<Character> charSet = new HashSet<>();
+
+        for (int right = 0; right < s.length(); right++) {
+            while (charSet.contains(s.charAt(right))) {
+                charSet.remove(s.charAt(left));
+                left++;
+            }
+
+            charSet.add(s.charAt(right));
+            maxLength = Math.max(maxLength, right - left + 1);
+        }
+
+        return maxLength;       
     }
 
     
