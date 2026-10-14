@@ -1,6 +1,9 @@
 package Sliding_Window;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
 
 public class ques {
 
@@ -60,6 +63,33 @@ public class ques {
 
         return maxLength;       
     }
+
+    // 438. Find All Anagrams in a String
+    public List<Integer> findAnagrams(String s, String p) {
+        ArrayList<Integer> ans = new ArrayList<>();
+        int arrs[] = new int[26];
+        int arrp[] = new int[26];
+        for(int i=0;i<p.length();i++){
+            char curr = p.charAt(i);
+            arrs[curr-'a']++;
+        }
+        int left = 0;
+        for(int right=0;right<s.length();right++){
+            char curr = s.charAt(right);
+            arrp[curr-'a']++;
+            if(right-left+1==p.length()){
+                if(Arrays.equals(arrs,arrp)){
+                    ans.add(left);
+                }
+                char leftChar = s.charAt(left);
+                arrp[leftChar-'a']--;
+                left++;
+            }
+        }
+        return ans;
+    }
+
+    // 
 
     
 }

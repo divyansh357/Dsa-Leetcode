@@ -58,5 +58,47 @@ public class Medium {
 
         return true;
     }
+
+    // Relative Path
+   public String relativePath(String s1, String s2) {
+
+    // Remove the leading "/" so we don't get an empty element
+    String[] arr1 = s1.substring(1).split("/");
+    String[] arr2 = s2.substring(1).split("/");
+
+    StringBuilder result = new StringBuilder("cd ");
+
+    // Find the first directory where the paths differ
+    int i = 0;
+
+    while (i < arr1.length && i < arr2.length && arr1[i].equals(arr2[i])) {
+        i++;
+    }
+
+    // Go up from s1 to the common directory
+    for (int j = i; j < arr1.length; j++) {
+        result.append("..");
+
+        if (j != arr1.length - 1) {
+            result.append("/");
+        }
+    }
+
+    // If we had to go up and also need to go down
+    if (i < arr1.length && i < arr2.length) {
+        result.append("/");
+    }
+
+    // Go down into s2
+    for (int j = i; j < arr2.length; j++) {
+        result.append(arr2[j]);
+
+        if (j != arr2.length - 1) {
+            result.append("/");
+        }
+    }
+
+    return result.toString();
+}
 }
 }
