@@ -1,6 +1,7 @@
 package Array.Easy;
 
 import java.util.Arrays;
+import java.util.Comparator;
 
 public class easy {
     
@@ -112,4 +113,27 @@ class Solution {
         return index;
     }
 
+// 1. Two Sum    
+    public int[] twoSum(int[] nums, int target) {
+       int[][] copyArr = new int[nums.length][2];
+       for(int i=0;i<nums.length;i++){
+        copyArr[i][0] = nums[i];
+        copyArr[i][1] = i;
+       }
+
+       Arrays.sort(copyArr,Comparator.comparingInt(a->a[0]));
+
+       int left=0,right=nums.length-1;
+       while(left<right){
+        int curr = copyArr[left][0] + copyArr[right][0];
+        if(curr==target){
+            return new int[]{Math.min(copyArr[left][1] , copyArr[right][1]),Math.max(copyArr[left][1] , copyArr[right][1])};
+        }
+        else if(curr<target){
+            left++;
+        }
+        else right--;
+       }
+       return new int[0];
+    }
 }    
